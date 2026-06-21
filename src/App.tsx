@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import { useReducer, useRef } from "react";
+import { useReducer, useRef, createContext } from "react";
 import { reducer } from "./util/reducer.js";
 import "./App.scss";
-import Home from "./pages/Home/Home";
-import New from "./pages/New/New";
-import Diary from "./pages/Diary/Diary";
-import Edit from "./pages/Edit/Edit";
-import NotFound from "./pages/NotFound/NotFound";
+import Home from "./pages/Home/Home.jsx";
+import New from "./pages/New/New.jsx";
+import Diary from "./pages/Diary/Diary.jsx";
+import Edit from "./pages/Edit/Edit.jsx";
+import NotFound from "./pages/NotFound/NotFound.jsx";
 
 const mockData = [
   {
@@ -28,6 +28,9 @@ const mockData = [
     emotionId: 3,
   },
 ];
+
+export const DiaryStateContext = React.createContext();
+export const DiaryDispatchContext = React.createContext();
 
 function App() {
   const [data, dispatch] = useReducer(reducer, mockData);
@@ -63,15 +66,25 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/new" element={<New />} />
-        <Route path="/diary/:id" element={<Diary />} />
-        <Route path="/edit" element={<Edit />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </div>
+    <DiaryStateContext.Provider value={data}>
+      <DiaryDispatchContext.Provider
+        value={{
+          onCreate,
+          onUpdate,
+          onDelete,
+        }}
+      >
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/new" element={<New />} />
+            <Route path="/diary/:id" element={<Diary />} />
+            <Route path="/edit" element={<Edit />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      </DiaryDispatchContext.Provider>
+    </DiaryStateContext.Provider>
   );
 }
 
