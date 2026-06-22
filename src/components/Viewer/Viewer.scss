@@ -1,0 +1,65 @@
+.Viewer {
+  section {
+    width: 100%;
+    margin-bottom: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  h4 {
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .emotion_img_wrapper {
+    background-color: #ececec;
+    width: 250px;
+    height: 250px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    &_1 {
+      background-color: #64c964;
+    }
+    &_2 {
+      background-color: #9dd772;
+    }
+    &_3 {
+      background-color: #fdce17;
+    }
+    &_4 {
+      background-color: #fd8446;
+    }
+    &_5 {
+      background-color: #fd565f;
+    }
+  }
+
+  .emotion_descript {
+    font-size: 25px;
+    color: white;
+  }
+
+  .content_wrapper {
+    width: 100%;
+    background-color: #ececec;
+    border-radius: 5px;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+
+    p {
+      padding: 20px;
+      text-align: left;
+      font-size: 20px;
+      font-family: "Yeon Sung";
+      font-weight: 400;
+      line-height: 2.5;
+    }
+  }
+}

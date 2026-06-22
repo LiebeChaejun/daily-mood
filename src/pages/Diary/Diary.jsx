@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useDiary from "../../hooks/useDiary";
 import Header from "../../components/Header/Header";
 import Button from "../../components/Button/Button";
+import Viewer from "../../components/Viewer/Viewer";
 import { getFormattedDate } from "../../util/getFormattedDate";
 
 const Diary = () => {
@@ -24,7 +25,7 @@ const Diary = () => {
             <Button text={"수정하기"} onClick={() => nav(`/edit/${id}`)} />
           }
         />
-        <div>Diary 페이지입니다.</div>
+        <Viewer content={content} emotionId={emotionId} />
       </div>
     );
   }
