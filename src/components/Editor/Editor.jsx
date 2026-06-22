@@ -46,7 +46,7 @@ const Editor = ({ initData, onSubmit }) => {
         date: getFormattedDate(new Date(parseInt(initData.date))),
       });
     }
-  }, initData);
+  }, [initData]);
 
   return (
     <div className="Editor">

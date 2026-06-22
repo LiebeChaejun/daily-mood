@@ -24,7 +24,7 @@ const DiaryItem = ({ id, emotionId, content, date }) => {
       </div>
       <div className="info_section">
         <div onClick={goDetail} className="date_wrapper">
-          {new Date(Number(date)).toLocaleString()}
+          {new Date(date).toLocaleDateString()}
         </div>
         <div className="content_wrapper">{content.slice(0, 25)}</div>
       </div>

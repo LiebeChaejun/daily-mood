@@ -11,19 +11,19 @@ import NotFound from "./pages/NotFound/NotFound.jsx";
 const mockData = [
   {
     id: "mock1",
-    date: new Date().getTime() - 1,
+    date: new Date("2026-06-20").getTime(),
     content: "mock1",
     emotionId: 1,
   },
   {
     id: "mock2",
-    date: new Date().getTime() - 2,
+    date: new Date("2026-06-19").getTime(),
     content: "mock2",
     emotionId: 2,
   },
   {
     id: "mock3",
-    date: new Date().getTime() - 3,
+    date: new Date("2026-06-18").getTime(),
     content: "mock3",
     emotionId: 3,
   },
@@ -38,10 +38,13 @@ function App() {
 
   const onCreate = (date, content, emotionId) => {
     dispatch({
-      id: idRef.current,
-      date: new Date(date).getTime(),
-      content,
-      emotionId,
+      type: "CREATE",
+      data: {
+        id: idRef.current,
+        date: new Date(date).getTime(),
+        content,
+        emotionId,
+      },
     });
     idRef.current += 1;
   };
