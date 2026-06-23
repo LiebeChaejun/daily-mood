@@ -8,6 +8,8 @@ const useDiary = (id) => {
   const nav = useNavigate();
 
   useEffect(() => {
+    if (diary) return;
+
     const matchDiary = data.find((item) => String(item.id) === String(id));
 
     if (matchDiary) {

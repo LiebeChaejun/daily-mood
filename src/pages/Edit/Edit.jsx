@@ -23,8 +23,8 @@ const Edit = () => {
 
   const onClickDelete = () => {
     if (window.confirm("이 일기를 정말 삭제할까요? 다시 복구되지 않습니다!")) {
-      onDelete(id);
       nav("/", { replace: true });
+      onDelete(id);
     }
   };
 
