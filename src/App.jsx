@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useReducer, useRef, createContext } from "react";
+import { useReducer, useRef, createContext, useEffect } from "react";
 import { reducer } from "./util/reducer.js";
 import "./App.scss";
 import Home from "./pages/Home/Home.jsx";
@@ -67,6 +67,24 @@ function App() {
       targetId,
     });
   };
+
+  // 1️⃣ 초기 로드
+  useEffect(() => {
+    const rawData = localStorage.getItem("diary");
+    if (!rawData) return;
+
+    const localData = JSON.parse(rawData);
+    if (localData.length === 0) return;
+
+    localData.sort((a, b) => Number(b.id) - Number(a.id));
+    idRef.current = localData[0].id + 1;
+    dispatch({ type: "INIT", data: localData });
+  }, []);
+
+  // 2️⃣ 변경될 때마다 저장
+  useEffect(() => {
+    localStorage.setItem("diary", JSON.stringify(data));
+  }, [data]);
 
   return (
     <DiaryStateContext.Provider value={data}>
