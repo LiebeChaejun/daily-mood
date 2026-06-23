@@ -15,24 +15,24 @@ const Editor = ({ initData, onSubmit }) => {
   const nav = useNavigate();
 
   const handleChangeDate = (e) => {
-    setState({
-      ...state,
+    setState((prev) => ({
+      ...prev,
       date: e.target.value,
-    });
+    }));
   };
 
   const handleChangeEmotion = (emotionId) => {
-    setState({
-      ...state,
-      emotionId,
-    });
+    setState((prev) => ({
+      ...prev,
+      emotionId: emotionId,
+    }));
   };
 
   const handleChangeContent = (e) => {
-    setState({
-      ...state,
+    setState((prev) => ({
+      ...prev,
       content: e.target.value,
-    });
+    }));
   };
 
   const handleSubmit = () => {
