@@ -1,3 +1,4 @@
+import React from "react";
 import "./DiaryItem.scss";
 import { useNavigate } from "react-router-dom";
 import { getEmotionById } from "../../util/getEmotion";
@@ -35,4 +36,4 @@ const DiaryItem = ({ id, emotionId, content, date }) => {
   );
 };
 
-export default DiaryItem;
+export default React.memo(DiaryItem);
