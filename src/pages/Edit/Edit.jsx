@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { DiaryDispatchContext } from "../../App";
 import useDiary from "../../hooks/useDiary";
+import usePageTitle from "../../hooks/usePageTitle";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import Editor from "../../components/Editor/Editor";
@@ -11,6 +12,7 @@ const Edit = () => {
   const data = useDiary(id);
   const { onUpdate, onDelete } = useContext(DiaryDispatchContext);
   const nav = useNavigate();
+  usePageTitle(`${id}번 일기 수정`);
 
   const onClickUpdate = (data) => {
     if (window.confirm("일기를 정말 수정할까요?")) {

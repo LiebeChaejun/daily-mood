@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { DiaryStateContext } from "../../App";
 import { getMonthlyDate } from "../../util/getFormattedDate";
+import usePageTitle from "../../hooks/usePageTitle";
 import Header from "../../components/Header/Header";
 import Button from "../../components/Button/Button";
 import DiaryList from "../../components/DiaryList/DiaryList";
@@ -12,6 +13,7 @@ const Home = () => {
   const headerTitle = `${pivotDate.getFullYear()}년 ${
     pivotDate.getMonth() + 1
   }월`;
+  usePageTitle("감정 일기장");
 
   useEffect(() => {
     if (data.length >= 1) {

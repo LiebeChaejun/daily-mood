@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
+import usePageTitle from "../../hooks/usePageTitle";
 import useDiary from "../../hooks/useDiary";
 import Header from "../../components/Header/Header";
 import Button from "../../components/Button/Button";
@@ -9,6 +10,7 @@ const Diary = () => {
   const { id } = useParams();
   const data = useDiary(id);
   const nav = useNavigate();
+  usePageTitle(`${id}번 일기`);
 
   if (!data) {
     return <div>일기를 불러오고 있습니다...</div>;
