@@ -8,32 +8,11 @@ import Diary from "./pages/Diary/Diary.jsx";
 import Edit from "./pages/Edit/Edit.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 
-const mockData = [
-  {
-    id: "mock1",
-    date: new Date("2026-06-20").getTime(),
-    content: "mock1",
-    emotionId: 1,
-  },
-  {
-    id: "mock2",
-    date: new Date("2026-06-19").getTime(),
-    content: "mock2",
-    emotionId: 2,
-  },
-  {
-    id: "mock3",
-    date: new Date("2026-06-18").getTime(),
-    content: "mock3",
-    emotionId: 3,
-  },
-];
-
 export const DiaryStateContext = createContext();
 export const DiaryDispatchContext = createContext();
 
 function App() {
-  const [data, dispatch] = useReducer(reducer, mockData);
+  const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(0);
 
   const onCreate = (date, content, emotionId) => {
